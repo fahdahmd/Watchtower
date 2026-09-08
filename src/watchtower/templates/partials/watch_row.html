@@ -1,0 +1,19 @@
+{% if not watches %}
+<tr><td colspan="5" class="empty">No watches yet — add one via the API.</td></tr>
+{% endif %}
+{% for w in watches %}
+<tr class="status-{{ w.last_status }}">
+  <td>{{ w.name }}</td>
+  <td class="url-cell"><a href="{{ w.url }}" target="_blank" rel="noopener">{{ w.url }}</a></td>
+  <td>{{ w.check_interval_minutes }} min</td>
+  <td>
+    <span class="badge badge-{{ w.last_status }}">
+      {% if w.last_status == "changed" %}● Changed{% endif %}
+      {% if w.last_status == "ok" %}● OK{% endif %}
+      {% if w.last_status == "error" %}● Error{% endif %}
+      {% if w.last_status == "pending" %}● Pending{% endif %}
+    </span>
+  </td>
+  <td>{{ w.last_checked_at.strftime("%Y-%m-%d %H:%M UTC") if w.last_checked_at else "Never" }}</td>
+</tr>
+{% endfor %}

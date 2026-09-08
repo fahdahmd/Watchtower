@@ -1,0 +1,120 @@
+:root {
+  --bg: #0f1115;
+  --panel: #161922;
+  --border: #262b38;
+  --text: #e6e8ee;
+  --muted: #8b93a7;
+  --accent: #5b8cff;
+  --ok: #3ecf8e;
+  --changed: #ffb454;
+  --error: #ff5c6c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.topbar {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-icon {
+  color: var(--accent);
+}
+
+.container {
+  max-width: 960px;
+  margin: 32px auto;
+  padding: 0 24px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.panel-header h1 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 0 20px;
+}
+
+.watch-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.watch-table th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.watch-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  animation: fade-in 0.3s ease;
+}
+
+.url-cell a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 24px !important;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-ok { color: var(--ok); background: color-mix(in srgb, var(--ok) 15%, transparent); }
+.badge-changed { color: var(--changed); background: color-mix(in srgb, var(--changed) 15%, transparent); }
+.badge-error { color: var(--error); background: color-mix(in srgb, var(--error) 15%, transparent); }
+.badge-pending { color: var(--muted); background: color-mix(in srgb, var(--muted) 15%, transparent); }
+
+tr.status-changed {
+  animation: pulse-changed 1.6s ease-in-out 1;
+}
+
+@keyframes pulse-changed {
+  0%   { background-color: color-mix(in srgb, var(--changed) 22%, transparent); }
+  100% { background-color: transparent; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

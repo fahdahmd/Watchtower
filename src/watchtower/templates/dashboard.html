@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel">
+  <div class="panel-header">
+    <h1>Your watches</h1>
+    <p class="hint">Sign in via the API to get a token, then this table polls automatically.</p>
+  </div>
+
+  <table class="watch-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>URL</th>
+        <th>Interval</th>
+        <th>Status</th>
+        <th>Last checked</th>
+      </tr>
+    </thead>
+    <tbody
+      hx-get="/partials/watch-rows"
+      hx-trigger="load, every 15s"
+      hx-swap="innerHTML"
+    >
+      <tr><td colspan="5" class="empty">Loading...</td></tr>
+    </tbody>
+  </table>
+</section>
+{% endblock %}
